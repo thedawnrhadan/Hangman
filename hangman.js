@@ -1,16 +1,32 @@
+//This imports the Lodash library with the "_" variable
 const _ = window._;
+
+//This gets the canvas element with id "hangman"
 const canvas = document.getElementById("hangman");
+
+//It gets the 2D rendering context for the canvas
 const ctx = canvas.getContext("2d");
+
+// Gets the element with id "word"
 const wordEl = document.getElementById("word");
+
+// Gets the element with id "incorrect-guesses"
 const incorrectGuessesEl = document.getElementById("incorrect-guesses");
+
+// Gets the element with id "wstart-button"
 const startButton = document.getElementById("start-button");
 
-let word = "javascript";
+// An array of words for the game
+const words = ["javascript", "python", "ruby", "java", "erlang", "go", "php", "swift", "scala", "kotlin"];
+
+//It helps to randomly select a word from the worrds array
+let word = words[Math.floor(Math.random() * words.length)];
 let wordArray = word.split("");
 let wordSoFar = _.map(wordArray, () => "_");
 let incorrectGuesses = [];
 let remainingGuesses = 6;
 
+// This to add an event listener to the startButton element.
 startButton.addEventListener("click", () => {
   startButton.style.display = "none";
   document.addEventListener("keydown", event => {
@@ -34,6 +50,7 @@ startButton.addEventListener("click", () => {
   updateDisplay();
 });
 
+// This function updates the display of the word and incorrect guesses
 const updateDisplay = () => {
   wordEl.innerHTML = wordSoFar.join(" ");
   incorrectGuessesEl.innerHTML = `Incorrect guesses: ${incorrectGuesses.join(", ")}`;
@@ -43,6 +60,7 @@ const updateDisplay = () => {
   checkForWin();
 };
 
+//This is a function to check if the player has won or lost the game.
 const checkForWin = () => {
   if (!wordSoFar.includes("_")) {
     alert("You win!");
@@ -51,6 +69,7 @@ const checkForWin = () => {
   }
 };
 
+//this is the function to draw the hangman
 const drawHangman = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   switch (remainingGuesses) {
