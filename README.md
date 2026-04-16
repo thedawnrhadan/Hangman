@@ -4,7 +4,6 @@ The purpose of this project was to demonstrate the use of JavaScript and improve
 
 In short, this is the Hangman game. The game randomly selects a word from a predefined list of words and displays it as underscores, representing unguessed letters. The player can guess a letter by typing on the keyboard, and the game updates the word display and the hangman if the guess is incorrect. The game ends when the player has guessed all the letters of the word or made 6 incorrect guesses, at which point an alert will appear announcing the outcome of the game.
 
-[Software Demo Video](https://youtu.be/UozW5uJe9F4)
 
 # Development Environment
 - Lodash Library: Lodash is a JavaScript library that provides utility functions for common programming tasks. In this code, the Lodash library is imported with the "_" variable and used to map an array of underscores to the length of the randomly selected word, representing the state of the word so far.
